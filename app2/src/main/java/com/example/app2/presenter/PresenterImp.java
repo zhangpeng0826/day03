@@ -9,7 +9,7 @@ import com.example.app2.contract.ConTract;
 import com.example.app2.model.ModelImp;
 import com.example.app2.urils.URL;
 
-public class PresenterImp extends BasePresenter implements ConTract.Presenter {
+public class PresenterImp extends BasePresenter<MainActivity> implements ConTract.Presenter {
     private ModelImp modelImp;
     public PresenterImp() {
         modelImp = new ModelImp(this);
@@ -20,11 +20,12 @@ public class PresenterImp extends BasePresenter implements ConTract.Presenter {
         modelImp.getModel(URL.FoodUrl, new TvCallBack<Bean>() {
             @Override
             public void OnOk(Bean bean) {
+                iView.OnOk(bean);
             }
 
             @Override
             public void OnNo(String error) {
-
+                iView.OnNo(error);
             }
         });
     }
