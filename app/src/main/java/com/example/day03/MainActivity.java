@@ -14,13 +14,14 @@ public class MainActivity extends BaseActivity<PresenterImp> implements ConTract
 
     private TextView tv;
 
+
     @Override
     protected PresenterImp getPresenter() {
         return new PresenterImp(this);
     }
 
     public void initData() {
-        getPresenter().getPersenter();
+        presenter.getPersenter();
     }
 
     public void initView() {
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity<PresenterImp> implements ConTract
 
     @Override
     public void OnOk(Bean bean) {
-        tv.setText(bean.getData().get(1).getTitle());
+            tv.setText(bean.getData().get(1).getTitle());
     }
 
     @Override

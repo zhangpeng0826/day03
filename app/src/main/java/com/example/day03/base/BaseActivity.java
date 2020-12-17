@@ -10,16 +10,18 @@ import com.example.day03.contract.ConTract;
 import com.example.day03.presenter.PresenterImp;
 
 public abstract class BaseActivity<T> extends AppCompatActivity {
-    private T presenter1;
+    protected T presenter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        presenter1 = getPresenter();
+        presenter = getPresenter();
         initView();
         initData();
     }
+
+
 
     protected abstract T getPresenter();
 
