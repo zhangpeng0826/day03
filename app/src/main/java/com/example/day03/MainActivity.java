@@ -5,36 +5,36 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.day03.base.BaseActivity;
 import com.example.day03.bean.Bean;
 import com.example.day03.contract.ConTract;
 import com.example.day03.presenter.PresenterImp;
 
-public class MainActivity extends AppCompatActivity implements ConTract.View {
+public class MainActivity extends BaseActivity<PresenterImp> implements ConTract.View {
 
     private TextView tv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-        initData();
+    protected PresenterImp getPresenter() {
+        return new PresenterImp(this);
     }
 
-    private void initData() {
-        PresenterImp presenterImp = new PresenterImp(this);
-        presenterImp.getPersenter();
+    public void initData() {
+        getPresenter().getPersenter();
     }
 
-    private void initView() {
+    public void initView() {
         tv = findViewById(R.id.tv);
     }
 
     @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     public void OnOk(Bean bean) {
-        for (int i = 0; i < bean.getData().size(); i++) {
-            tv.setText(bean.getData().get(i).getTitle());
-        }
+        tv.setText(bean.getData().get(1).getTitle());
     }
 
     @Override
