@@ -27,7 +27,7 @@ public class RetUtil implements NewWork{
 
     public RetUtil() {
         apiService = new Retrofit.Builder()
-                .baseUrl(URL.FoodUrl)
+                .baseUrl(URL.BASEURL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(ApiService.class);

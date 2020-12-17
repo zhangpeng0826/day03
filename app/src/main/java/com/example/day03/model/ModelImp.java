@@ -25,7 +25,7 @@ public class ModelImp implements ConTract.Model {
 
 
     @Override
-    public <T> void getModel(String url, TvCallBack callBack) {
+    public <T> void getModel(String url, TvCallBack<T> callBack) {
         RetUtil.getRetUtil().get(url,callBack);
     }
 }

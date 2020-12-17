@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.day03.contract.ConTract;
 import com.example.day03.presenter.PresenterImp;
 
-public abstract class BaseActivity<T> extends AppCompatActivity {
+public abstract class BaseActivity<p extends BasePresenter> extends AppCompatActivity implements BaseView{
     protected T presenter;
 
     @Override
