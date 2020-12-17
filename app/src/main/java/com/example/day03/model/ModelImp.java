@@ -2,7 +2,9 @@ package com.example.day03.model;
 
 import com.example.day03.api.ApiService;
 import com.example.day03.bean.Bean;
+import com.example.day03.callback.TvCallBack;
 import com.example.day03.contract.ConTract;
+import com.example.day03.utils.RetUtil;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -21,36 +23,9 @@ public class ModelImp implements ConTract.Model {
         this.persenter = persenter;
     }
 
+
     @Override
-    public void getModel() {
-        new Retrofit.Builder()
-                .baseUrl(ApiService.baseUrl)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ApiService.class).get()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Bean>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull Bean bean) {
-                            persenter.OnOk(bean);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                            persenter.OnNo(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+    public <T> void getModel(String url, TvCallBack callBack) {
+        RetUtil.getRetUtil().get(url,callBack);
     }
 }

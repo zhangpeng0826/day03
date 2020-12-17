@@ -9,7 +9,7 @@ public class ConTract {
         void OnNo(String error);
     }
       public interface Model{
-          <T> void getModel(String url, TvCallBack callBack);
+          <T> void getModel(String url, TvCallBack<T> callBack);
     }
      public interface Persenter{
         void getPersenter();
