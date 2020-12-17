@@ -17,7 +17,7 @@ public class MainActivity extends BaseActivity<PresenterImp> implements ConTract
 
     @Override
     protected PresenterImp getPresenter() {
-        return new PresenterImp(this);
+        return new PresenterImp();
     }
 
     public void initData() {
