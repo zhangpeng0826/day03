@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.app2.base.BaseView;
+
+public class MainActivity extends AppCompatActivity implements BaseView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
