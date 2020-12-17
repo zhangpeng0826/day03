@@ -16,7 +16,7 @@ public class MainActivity extends BaseActivity<PresenterImp> implements ConTract
     private TextView tv;
 
     public void initData() {
-        getpresenter().getpresenter();
+        presenter.getpresenter();
     }
 
     public void initView() {

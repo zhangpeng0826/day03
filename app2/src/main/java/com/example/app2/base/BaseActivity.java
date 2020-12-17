@@ -8,15 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity<p extends BasePresenter> extends AppCompatActivity implements BaseView{
     protected p presenter;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(getLayout());
         presenter = getpresenter();
         presenter.attachView(this);
         initView();
         initData();
     }
+
 
     protected abstract void initData();
 
